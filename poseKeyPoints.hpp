@@ -1,8 +1,18 @@
-#ifndef POSE_KEY_POINTS_H
-#define POSE_KEY_POINTS_H
+#ifndef POSEKEYPOINTS_H
+#define POSEKEYPOINTS_H
 
 namespace pkp{
     class PoseKeyPoints {
+    private:
+        //18個の関節
+        const static int keyPointNum = 18;
+        //x,y,scoreの3つを記録
+        const static int variableNum = 3;
+
+        float kpArray[keyPointNum][variableNum];
+
+        int jrtArray[keyPointNum][keyPointNum];
+
     public:
         PoseKeyPoints() :
             kpArray(),
@@ -21,15 +31,6 @@ namespace pkp{
         void calcJRT();
         void printJRT() const;
 
-    private:
-        //18個の関節
-        const static int keyPointNum = 18;
-        //x,y,scoreの3つを記録
-        const static int variableNum = 3;
-
-        float kpArray[keyPointNum][variableNum];
-
-        int jrtArray[keyPointNum][keyPointNum];
     };
 }
 

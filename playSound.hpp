@@ -1,42 +1,47 @@
-#ifndef PLAYSOUND_H
-#define PLAYSOUND_H
-
+#ifndef PS_PLAYSOUND_H
+#define PS_PLAYSOUND_H
 
 namespace ps{
     class playSound{
     private:
         const double sampleFreq;
-        double Amp;
-        double Freq;
-
+        double Vol;
         bool boolSound;
-        bool boolSwitch;
-
-        FILE *fp;
+        bool boolSwitchON;
         int fd;
 
     public:
         playSound() :
             sampleFreq(44100),
-            Amp(10000),
-            Freq(0),
+            Vol(10000),
             boolSound(false),
-            boolSwitch(true),
-            fp(),
+            boolSwitchON(false),
+            // fp(),
+            fd()
         {}
 
-        void player();
-        void stop(){boolSwitch = false;}
-
         void master();
+        // void controller();
 
+    private:
+        void player();
+        void stop(){boolSwitchON = false;}
+
+        void playSine();
+
+
+
+    // private:
+    //     class Sine {
+    //     private:
+    //         double Amp
+    //         double Freq;
+    //         short data;
+    //
+    //     };
 
     };
 }
 
-
-class sine : public playSound{
-
-};
 
 #endif

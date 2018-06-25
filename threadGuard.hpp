@@ -1,5 +1,9 @@
+#ifndef PS_THREAD_H
+#define PS_THREAD_H
+
 #include <thread>
 #include <string>
+#include <iostream>
 
 namespace ps{
     class threadGuard{
@@ -27,3 +31,5 @@ namespace ps{
         threadGuard& operator=(threadGuard const&) = delete;
     };
 }
+
+#endif

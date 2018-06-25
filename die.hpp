@@ -1,5 +1,5 @@
-#ifndef DIE_H
-#define DIE_H
+#ifndef PS_DIE_H
+#define PS_DIE_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,3 +10,5 @@ void die(std::string str){
     perror(s);
     exit(1);
 }
+
+#endif
