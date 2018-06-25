@@ -1,18 +1,24 @@
+#include <thread>
+#include <string>
 
-namespace oci{
+namespace ps{
     class threadGuard{
     private:
         std::thread& t;
+        std::string id;
+
     public:
         //暗黙呼び出しの禁止
-        explicit threadGuard(std::thread& t_) :
-            t(t_)
+        explicit threadGuard(std::thread& t_,std::string id_) :
+            t(t_),
+            id(id_)
         {}
 
         //join()の呼び出しミス防止
         ~threadGuard() {
             if(t.joinable()){
                 t.join();
+                std::cout << "thread " << id << " join" << std::endl;
             }
         }
         //コピーコンストラクタ
