@@ -18,14 +18,13 @@ namespace ps{
         if (NULL == (fp = popen( c_cmd, "w"))) die("popen");
         fd = fileno(fp);
         boolSwitchON = true;
-        // std::cout << "sox start" << std::endl;
 
         while(boolSwitchON){}
 
         pclose(fp);
     }
 
-    void playSound::playSine(){
+    void playSound::playSineTest(){
         short data;
 
         while(!boolSwitchON){}
@@ -42,8 +41,30 @@ namespace ps{
         std::thread t1(&playSound::player,this);
         threadGuard tg1(t1,"player");
 
-        std::thread t2(&playSound::playSine,this);
+        std::thread t2(&playSound::playSineTest,this);
         threadGuard tg2(t2,"sine");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    void ps::Sine::master(){
+
+    }
+
+    void ps::Sine::contoller(){
+
+    }
+
+    void ps::Sine::playSine(){
 
     }
 }

@@ -6,7 +6,6 @@ namespace ps{
     private:
         const double sampleFreq;
         double Vol;
-        bool boolSound;
         bool boolSwitchON;
         int fd;
 
@@ -14,34 +13,42 @@ namespace ps{
         playSound() :
             sampleFreq(44100),
             Vol(10000),
-            boolSound(false),
             boolSwitchON(false),
-            // fp(),
             fd()
         {}
 
-        void master();
-        // void controller();
+        virtual void master();
 
     private:
         void player();
         void stop(){boolSwitchON = false;}
+        void playSineTest();
+    };
 
-        void playSine();
 
 
+    class Sine : public playSound{
+    private:
+        double Amp;
+        double F;
+        short data;
+        bool boolSound;
 
-    // private:
-    //     class Sine {
-    //     private:
-    //         double Amp
-    //         double Freq;
-    //         short data;
-    //
-    //     };
+    public:
+        playSoundSine() :
+            Amp(10000),
+            F(),
+            data(),
+            boolSound(false)
+        {}
+
+        void master() override {}
+        void controller();
+
+    private:
+        playSine();
 
     };
 }
-
 
 #endif
