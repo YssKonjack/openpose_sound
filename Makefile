@@ -3,7 +3,7 @@
 #--------------------------------
 
 PROGRAM = test.bin
-SRCS = main.cpp poseKeyPoints.cpp
+SRCS = main.cpp poseKeyPoints.cpp playSound.cpp
 
 #--------------------------------
 # Compile Option
@@ -11,7 +11,7 @@ SRCS = main.cpp poseKeyPoints.cpp
 
 CXX = g++
 LDLIBS =
-CXXFLAGS = -g -Wall -MMD -MP -std=gnu++11
+CXXFLAGS = -g -Wall -MMD -MP -std=gnu++11 -pthread -lm
 CFLAGS = -g -Wall -Wextra -MMD -MP
 
 #--------------------------------

@@ -13,17 +13,24 @@ namespace pkp{
 
         int jrtArray[keyPointNum][keyPointNum];
 
+        bool startFlg;
+
     public:
         PoseKeyPoints() :
             kpArray(),
-            jrtArray()
+            jrtArray(),
+            startFlg(false)
         {}
 
         inline void setValue(std::string value, int kpoint, int var){
             kpArray[kpoint][var] = std::stof(value);
         }
+        inline float getKpVal(int joint, int var){
+            return kpArray[joint][var];
+        }
         inline int kpNum() const {return keyPointNum;}
         inline int varNum() const {return variableNum;}
+        inline int stFlg() const {return startFlg;}
         void readData(int jrt);
         void print() const;
         void reset();

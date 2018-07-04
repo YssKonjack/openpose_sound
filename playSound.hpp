@@ -1,52 +1,61 @@
 #ifndef PS_PLAYSOUND_H
 #define PS_PLAYSOUND_H
 
+#include "poseKeyPoints.hpp"
+
+//g++ -pthread -std=c++11 playSound.cpp -o playSoundTest.bin
+
 namespace ps{
     class playSound{
-    private:
-        const double sampleFreq;
-        double Vol;
-        bool boolSwitchON;
+    protected:
         int fd;
+        const float sampleFreq;
+        float Vol;
+        bool boolSwitchON;
 
     public:
         playSound() :
+            fd(),
             sampleFreq(44100),
-            Vol(10000),
-            boolSwitchON(false),
-            fd()
+            Vol(1.0),
+            boolSwitchON(false)
         {}
 
         virtual void master();
 
-    private:
+    protected:
         void player();
         void stop(){boolSwitchON = false;}
+
+    private:
         void playSineTest();
     };
 
-
+///////////////////////////////////////////
 
     class Sine : public playSound{
     private:
-        double Amp;
-        double F;
+        float Amp;
+        float F;
         short data;
         bool boolSound;
+        pkp::PoseKeyPoints poseArray;
 
     public:
-        playSoundSine() :
-            Amp(10000),
-            F(),
-            data(),
-            boolSound(false)
+        Sine() :
+            Amp(10000.0),
+            F(0.0),
+            data(0),
+            boolSound(false),
+            poseArray()
         {}
 
-        void master() override {}
-        void controller();
+        void master() override;
 
     private:
-        playSine();
+        void synthesizer();
+        void controller();
+
 
     };
 }

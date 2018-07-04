@@ -4,6 +4,7 @@
 
 namespace pkp{
 
+    //jrt = 0:PoseKeyPoints jrt = 1:JRT
     void PoseKeyPoints::readData(int jrt){
         std::string input;
         int dataCount = 0;
@@ -11,7 +12,11 @@ namespace pkp{
 
         while(1){
             std::cin >> input;
-            if("quit" == input) break;
+            if("start" == input) startFlg = true;
+            if("quit" == input) {
+                startFlg = false;
+                break;
+            }
 
             if("reset" == input){
                 dataCount = 0;
