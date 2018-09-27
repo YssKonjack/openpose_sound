@@ -6,7 +6,7 @@
 // int main(){
 //     pkp::PoseKeyPoints poseArray;
 //
-//     poseArray.readData(0);
+//     poseArray.readData(1);
 //
 //     return 0;
 // }
@@ -14,7 +14,7 @@
 
 
 int main(){
-    ps::Sine player;
+    ps::Chord player;
     player.master();
 
     return 0;

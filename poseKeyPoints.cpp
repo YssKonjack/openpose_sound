@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <poseKeyPoints.hpp>
+#include "poseKeyPoints.hpp"
 
 namespace pkp{
 
@@ -24,7 +24,12 @@ namespace pkp{
 
                 if (1 == jrt){
                     calcJRT();
-                    printJRT();
+                    // printJRT();
+                    //
+                    int x = jrtPositiveX();
+                    int y = jrtPositiveY();
+                    std::cout << x << " " << y << std::endl;
+                    //
                 }else if(0 == jrt){
                     print();
                 }
@@ -76,6 +81,7 @@ namespace pkp{
         }
     }
 
+
     void PoseKeyPoints::printJRT() const {
         using std::cout;
         using std::endl;
@@ -111,4 +117,30 @@ namespace pkp{
             cout << endl;
         }
     }
+
+    int PoseKeyPoints::jrtPositiveX(){
+        int cnt = 0;
+        for(int i=0; i < keyPointNum-1; i++){
+            for(int j = i+1; j < keyPointNum; j++){
+                if(1 == jrtArray[i][j]){
+                    cnt += 1;
+                }
+            }
+        }
+        return cnt;
+    }
+
+
+    int PoseKeyPoints::jrtPositiveY(){
+        int cnt;
+        for(int i=0; i < keyPointNum-1; i++){
+            for(int j = i+1; j< keyPointNum; j++){
+                if(1 == jrtArray[j][i]){
+                    cnt +=1;
+                }
+            }
+        }
+        return cnt;
+    }
+
 }

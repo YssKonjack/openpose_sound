@@ -38,6 +38,10 @@ namespace pkp{
         void calcJRT();
         void printJRT() const;
 
+        int jrtPositiveX();
+        int jrtPositiveY();
+
+
     };
 }
 

@@ -16,48 +16,85 @@ namespace ps{
     public:
         playSound() :
             fd(),
-            sampleFreq(44100),
+            sampleFreq(44100.0),
             Vol(1.0),
             boolSwitchON(false)
         {}
 
         virtual void master();
-
-    protected:
         void player();
+
+        protected:
         void stop(){boolSwitchON = false;}
 
     private:
         void playSineTest();
     };
 
-///////////////////////////////////////////
+    ///////////////////////////////////////////
 
-    class Sine : public playSound{
+    // class Sine : public playSound{
+    // private:
+    //     float Amp;
+    //     float Freq;
+    //     short soundData;
+    //     bool boolSound;
+    //     pkp::PoseKeyPoints poseArray;
+    //
+    // public:
+    //     Sine() :
+    //         Amp(10000.0),
+    //         Freq(0.0),
+    //         soundData(0),
+    //         boolSound(false),
+    //         poseArray()
+    //     {}
+    //
+    //     void master() override;
+    //
+    // // private:
+    //     void controller();
+    //     void synthesizer();
+    //
+    // };
+
+    ////////////////////////////////////////////
+
+    class Chord : public playSound{
     private:
         float Amp;
-        float F;
-        short data;
-        bool boolSound;
+        float rootFreq;
+        float thirdFreq;
+        float fifthFreq;
+        short soundData;
+        bool  boolSound;
         pkp::PoseKeyPoints poseArray;
 
     public:
-        Sine() :
+        Chord() :
             Amp(10000.0),
-            F(0.0),
-            data(0),
+            rootFreq(442.0),
+            thirdFreq(0.0),
+            fifthFreq(0.0),
+            soundData(0),
             boolSound(false),
             poseArray()
         {}
 
         void master() override;
+        void controller();
+        void synthesizer();
 
     private:
-        void synthesizer();
-        void controller();
+        void transChordX(bool positive);//和音のx方向の遷移
+        void transChordY(bool positive);//y方向の遷移
+
 
 
     };
+
 }
+
+
 
 #endif
