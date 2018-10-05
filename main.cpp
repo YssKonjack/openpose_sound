@@ -3,10 +3,12 @@
 #include "poseKeyPoints.hpp"
 #include "playSound.hpp"
 
+
+
 // int main(){
 //     pkp::PoseKeyPoints poseArray;
 //
-//     poseArray.readData(1);
+//     poseArray.readData(0);
 //
 //     return 0;
 // }

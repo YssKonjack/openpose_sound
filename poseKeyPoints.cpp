@@ -21,20 +21,24 @@ namespace pkp{
             if("reset" == input){
                 dataCount = 0;
                 personCount = 0;
+                frameCnt++;
+
+                calcJRT();
 
                 if (1 == jrt){
-                    calcJRT();
-                    // printJRT();
-                    //
-                    int x = jrtPositiveX();
-                    int y = jrtPositiveY();
-                    std::cout << x << " " << y << std::endl;
-                    //
+                    std::cout << std::endl;
+                    printJRT();
+
+                    // int x = jrtPositiveX();
+                    // int y = jrtPositiveY();
+                    // std::cout << x << " " << y << std::endl;
+
                 }else if(0 == jrt){
                     print();
                 }
 
                 reset();
+
             }else{
                 if ("Person" == input){
                     personCount += 1;
@@ -49,9 +53,31 @@ namespace pkp{
     }
 
     void PoseKeyPoints::print() const {
+        std::cout << " POSE_COCO_BODY_PARTS {" << std::endl <<
+            "{0,  Nose}," << std::endl <<
+            "{1,  Neck}," << std::endl <<
+            "{2,  RShoulder}," << std::endl <<
+            "{3,  RElbow}," << std::endl <<
+            "{4,  RWrist}," << std::endl <<
+            "{5,  LShoulder}," << std::endl <<
+            "{6,  LElbow}," << std::endl <<
+            "{7,  LWrist}," << std::endl <<
+            "{8,  RHip}," << std::endl <<
+            "{9,  RKnee}," << std::endl <<
+            "{10, RAnkle}," << std::endl <<
+            "{11, LHip}," << std::endl <<
+            "{12, LKnee}," << std::endl <<
+            "{13, LAnkle}," << std::endl <<
+            "{14, REye}," << std::endl <<
+            "{15, LEye}," << std::endl <<
+            "{16, REar}," << std::endl <<
+            "{17, LEar}," << std::endl <<
+            "{18, Background}," << std::endl <<
+        "}" << std::endl << std::endl;
+
         std::cout << "(x, y, score)" << std::endl;
         for (int i = 0; i < keyPointNum; i++){
-            std::cout << std::to_string(kpArray[i][0]) << ", " << std::to_string(kpArray[i][1]) << ", " << std::to_string(kpArray[i][2]) << std::endl;
+            std::cout << i << " " << std::to_string(kpArray[i][0]) << ", " << std::to_string(kpArray[i][1]) << ", " << std::to_string(kpArray[i][2]) << std::endl;
         }
         std::cout << std::endl;
     }

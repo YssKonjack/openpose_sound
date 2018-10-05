@@ -15,22 +15,27 @@ namespace pkp{
 
         bool startFlg;
 
+        int frameCnt;
+
     public:
         PoseKeyPoints() :
             kpArray(),
             jrtArray(),
-            startFlg(false)
+            startFlg(false),
+            frameCnt(0)
         {}
 
         inline void setValue(std::string value, int kpoint, int var){
             kpArray[kpoint][var] = std::stof(value);
         }
-        inline float getKpVal(int joint, int var){
+        inline float getKpVal(int joint, int var) const {
             return kpArray[joint][var];
         }
         inline int kpNum() const {return keyPointNum;}
         inline int varNum() const {return variableNum;}
         inline int stFlg() const {return startFlg;}
+        inline int frmCnt() const {return frameCnt;}
+
         void readData(int jrt);
         void print() const;
         void reset();
@@ -42,30 +47,10 @@ namespace pkp{
         int jrtPositiveY();
 
 
+
+
     };
 }
 
 
 #endif
-
-// POSE_COCO_BODY_PARTS {
-//     {0,  "Nose"},
-//     {1,  "Neck"},
-//     {2,  "RShoulder"},
-//     {3,  "RElbow"},
-//     {4,  "RWrist"},
-//     {5,  "LShoulder"},
-//     {6,  "LElbow"},
-//     {7,  "LWrist"},
-//     {8,  "RHip"},
-//     {9,  "RKnee"},
-//     {10, "RAnkle"},
-//     {11, "LHip"},
-//     {12, "LKnee"},
-//     {13, "LAnkle"},
-//     {14, "REye"},
-//     {15, "LEye"},
-//     {16, "REar"},
-//     {17, "LEar"},
-//     {18, "Background"},
-// }
